@@ -30,8 +30,6 @@ function LoadAll($table, $filtre='', $tri='', $nb = 0)
 	}
 	if (!empty($tri)) {
 		$sSQL .= ' ORDER BY ' . $tri;
-	} else {
-		$sSQL .= ' ORDER BY ID DESC ';
 	}
 	
 	if ($nb != 0){
@@ -48,15 +46,15 @@ function LoadAll($table, $filtre='', $tri='', $nb = 0)
 	
 }
 
-function LoadOne($table,$libelleId,$id)
+function LoadOne($table,$column,$value)
 {
-	return LoadAll($table,$libelleId . "=" . $id);		
+	return LoadAll($table,$column . "=" . $value);		
 }
 
 //***************************************
 // AlreadyGet - 2019
 //***************************************
-function AlreadyGet($table, $column, $value)
+function AlreadyExist($table, $column, $value)
 {
 
 	$con = Connect();
