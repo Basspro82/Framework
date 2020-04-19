@@ -98,4 +98,12 @@ function addQueryCondition(&$sql,$condition){
 	$sql .= mysql_real_escape_string($condition);
 }
 
+function tableExist($tableName){
+	
+	// Select 1 from table_name will return false if the table does not exist.
+	$result = ExecuteQuery('select 1 from ' . $tableName . ' LIMIT 1');
+	return $result !== FALSE;
+
+}
+
 ?>
