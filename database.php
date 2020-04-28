@@ -18,29 +18,27 @@ function Disconnect($mysqli)
 	mysqli_close($mysqli);
 }
 
-function LoadAll($table, $filtre='', $tri='', $nb = 0)
+function LoadAll($table, $filtre='', $tri='', $nb = 0, $p = 1)
 {
 
 	$con = Connect();
 	
-	$sSQL = ' SELECT * ' .
+	$query = ' SELECT * ' .
 		' FROM ' . $table ;
 	if (!empty($filtre)) {
-		$sSQL .= ' WHERE ' . $filtre;
+		$query .= ' WHERE ' . $filtre;
 	}
 	if (!empty($tri)) {
-		$sSQL .= ' ORDER BY ' . $tri;
+		$query .= ' ORDER BY ' . $tri;
 	}
 	
-	if ($nb != 0){
-		$sSQL .= ' LIMIT 0,' . $nb;
-	}
+	if ($nb > 0) $query .= " LIMIT " . $nb * ($p - 1) . ", " . $nb;
 	
-	$result = $con->query($sSQL);
+	$result = $con->query($query);
 	
 	Disconnect($con);
 
-	showLog('database.php','LoadAll',$sSQL);
+	showLog('database.php','LoadAll',$query);
 
 	return $result;
 	
