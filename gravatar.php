@@ -11,7 +11,7 @@
  * @return String containing either just a URL or a complete image tag
  * @source https://gravatar.com/site/implement/images/php/
  */
-function get_gravatar( $email, $s = 80, $d = 'mp', $r = 'g', $img = false, $atts = array() ) {
+function getGravatar( $email, $s = 80, $d = 'mp', $r = 'g', $img = false, $atts = array() ) {
     $url = 'https://www.gravatar.com/avatar/';
     $url .= md5( strtolower( trim( $email ) ) );
     $url .= "?s=$s&d=$d&r=$r";
@@ -22,6 +22,17 @@ function get_gravatar( $email, $s = 80, $d = 'mp', $r = 'g', $img = false, $atts
         $url .= ' />';
     }
     return $url;
+}
+
+function gravatarExist($email) {
+    $hash = md5($email);
+    $uri = 'http://www.gravatar.com/avatar/' . $hash . '?d=404';
+    $headers = @get_headers($uri);
+    if (!preg_match("|200|", $headers[0])) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
 }
 
 ?>
