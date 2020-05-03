@@ -104,4 +104,9 @@ function tableExist($tableName){
 
 }
 
+function columnExist($table, $column){
+	$result = ExecuteQuery("SHOW COLUMNS FROM " . $table . " LIKE '" . $column . "'");
+	return (mysqli_num_rows($result))?TRUE:FALSE;
+}
+
 ?>
