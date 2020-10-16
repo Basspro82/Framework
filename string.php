@@ -54,4 +54,12 @@ function deleteAccents($string){
   return str_replace($supp, $replace, $string);
 }
 
+function cutString($string, $nbCharacters, $EndCharacters){
+      if (strlen($string) > $nbCharacters){
+            return substr($string,0,$nbCharacters) . $EndCharacters;
+      }else{
+            return $string;
+      }
+}
+
 ?>
