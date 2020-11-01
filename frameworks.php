@@ -1,15 +1,15 @@
 <?php
 
-	include('../../framework/log.php');
-    include('../../framework/dom.php');
-    include('../../framework/database.php');
-    include('../../framework/string.php');
-    include('../../framework/ux.php');
-    include('../../framework/mail.php');
-    include('../../framework/url.php');
-    include('../../framework/error.php');
-    include('../../framework/image.php');
-    include('../../framework/gravatar.php');
-    include('../../framework/imdbapi.class.php');
+	require_once('log.php');
+    require_once('dom.php');
+    require_once('database.php');
+    require_once('string.php');
+    require_once('ux.php');
+    require_once('mail.php');
+    require_once('url.php');
+    require_once('error.php');
+    require_once('image.php');
+    require_once('gravatar.php');
+    require_once('imdbapi.class.php');
 
 ?>
